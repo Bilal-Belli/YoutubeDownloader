@@ -77,7 +77,7 @@ def fonction3():
 
 root = Tk()
 root.title('Youtube Downloader')
-root.iconbitmap('./Projet/logo.ico')
+root.iconbitmap('logo.ico')
 
 # Designate Height and Width of our app
 app_width = 550
@@ -137,7 +137,7 @@ ChoixFonction.current(0)
 ChoixFonction.bind("<<ComboboxSelected>>",fonction1)
 
 # Button Download
-image=Image.open('./Projet/download.ico')
+image=Image.open('download.ico')
 img=image.resize(( 100, 100))
 my_img=ImageTk.PhotoImage(img)
 btn = Button(root, image=my_img,borderwidth=0,bg="#101820",command = fonction2)
