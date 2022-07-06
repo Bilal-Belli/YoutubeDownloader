@@ -1,4 +1,4 @@
-from tkinter import ttk
+from tkinter import filedialog, ttk
 from tkinter import *
 import tkinter as tk
 from turtle import color, width
@@ -6,73 +6,73 @@ from PIL import Image, ImageTk
 from tkinter.font import Font
 import pytube
 from pytube import Playlist
+import os
 
 global LaValeur
 global URL
+global path
 LaValeur =' Video High Quality'#la valeur par defaut
+path = os.path.join(os.path.join(os.environ['USERPROFILE']),'OneDrive\Bureau') 
+print("The Desktop path is: " + path)
 
 #Function 1           #####################
 def fonction1(event):
+    global LaValeur
+    global URL
     LaValeur = event.widget.get()
     print(LaValeur)
 ###########################################
 #Function 2           #####################
 def fonction2():
+    global LaValeur
+    global URL
+    global path
     URL = e1.get()
     if LaValeur==" Video High Quality":
         youtube = pytube.YouTube(URL)
         video = youtube.streams.get_highest_resolution()
-        video.download()
-    elif LaValeur==" Video Low Quality":
-        youtube = pytube.YouTube(URL)
-        video = youtube.streams.get_lowest_resolution()
-        video.download()
-    elif LaValeur==" PlayList High Quality":
-        p = Playlist(URL)
-        print(f'Downloading: {p.title}')
-        for video in p.videos:
-            print(video.title)
-            st = video.streams.get_highest_resolution()
-            st.download()
-    elif LaValeur==" PlayList Low Quality":
-        p = Playlist(URL)
-        print(f'Downloading: {p.title}')
-        for video in p.videos:
-            print(video.title)
-            st = video.streams.get_lowest_resolution()
-            st.download()
-    elif LaValeur==" Sound":
-        youtube = pytube.YouTube(URL)
-        sound = youtube.streams.get_audio_only()
-        sound.download()
-    elif LaValeur==" Sound Playlist":
-        p = Playlist(URL)
-        print(f'Downloading: {p.title}')
-        for video in p.videos:
-            print(video.title)
-            st = video.streams.get_audio_only()
-            st.download()
-        
+        video.download(path)
+    else:
+        if LaValeur==" Video Low Quality":
+            youtube = pytube.YouTube(URL)
+            video = youtube.streams.get_lowest_resolution()
+            video.download()
+        else:
+            if LaValeur==" PlayList High Quality":
+                p = Playlist(URL)
+                print(f'Downloading: {p.title}')
+                for video in p.videos:
+                    print(video.title)
+                    st = video.streams.get_highest_resolution()
+                    st.download()
+            else:
+                if LaValeur==" PlayList Low Quality":
+                    p = Playlist(URL)
+                    print(f'Downloading: {p.title}')
+                    for video in p.videos:
+                        print(video.title)
+                        st = video.streams.get_lowest_resolution()
+                        st.download()
+                else:
+                    if LaValeur==" Sound":
+                        youtube = pytube.YouTube(URL)
+                        sound = youtube.streams.get_audio_only()
+                        sound.download()
+                    else:
+                        #LaValeur==" Sound Playlist":
+                        p = Playlist(URL)
+                        print(f'Downloading: {p.title}')
+                        for video in p.videos:
+                            print(video.title)
+                            st = video.streams.get_audio_only()
+                            st.download()
 ###########################################
 #Function 3           #####################
-def fonction3(event):
-    LaValeur = event.widget.get()
-###########################################
-#Function 4           #####################
-def fonction4(event):
-    LaValeur = event.widget.get()
-###########################################
-#Function 5           #####################
-def fonction5(event):
-    LaValeur = event.widget.get()
-###########################################
-#Function 6           #####################
-def fonction6(event):
-    LaValeur = event.widget.get()
-###########################################
-#Function 7           #####################
-def fonction7(event):
-    LaValeur = event.widget.get()
+def fonction3():
+    global path
+    if 1==1:
+        path = filedialog.askdirectory()
+        print(path)
 ###########################################
 
 root = Tk()
@@ -117,9 +117,9 @@ label_6.grid(column = 0,row = 3, padx = 15, pady = 10)
 e1 = tk.Entry(root, fg= "#006B38", width=49,font=('calibre',9, 'bold'))
 e1.grid(row=0, column=1,padx = 0, pady = 0)
 
-# Entry_2 FOR label_3
-e2 = tk.Entry(root, fg= "#006B38", width=49,font=('calibre',9, 'bold'))
-e2.grid(row=1, column=1,padx = 0, pady = 0)
+# Button FOR label_3 Choose PATH
+Btnpath = Button(root,fg= "#006B38",text="Choose Path",borderwidth=0,width=49,font=('calibre',9, 'bold'),command = fonction3)
+Btnpath.grid(row=1, column=1,padx = 0, pady = 0)
 
 # Combobox
 ChoixFonction = ttk.Combobox(root,width = 23, state="readonly", foreground= "#006B38")
@@ -136,7 +136,7 @@ ChoixFonction.grid(column = 1, row = 2)
 ChoixFonction.current(0)
 ChoixFonction.bind("<<ComboboxSelected>>",fonction1)
 
-# Button
+# Button Download
 image=Image.open('./Projet/download.ico')
 img=image.resize(( 100, 100))
 my_img=ImageTk.PhotoImage(img)
