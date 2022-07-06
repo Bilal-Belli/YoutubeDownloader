@@ -4,6 +4,8 @@ import tkinter as tk
 from turtle import color, width
 from PIL import Image, ImageTk
 from tkinter.font import Font
+import pytube
+from pytube import Playlist
 
 global LaValeur
 global URL
@@ -15,8 +17,42 @@ def fonction1(event):
     print(LaValeur)
 ###########################################
 #Function 2           #####################
-def fonction2(event):
-    LaValeur = event.widget.get()
+def fonction2():
+    URL = e1.get()
+    if LaValeur==" Video High Quality":
+        youtube = pytube.YouTube(URL)
+        video = youtube.streams.get_highest_resolution()
+        video.download()
+    elif LaValeur==" Video Low Quality":
+        youtube = pytube.YouTube(URL)
+        video = youtube.streams.get_lowest_resolution()
+        video.download()
+    elif LaValeur==" PlayList High Quality":
+        p = Playlist(URL)
+        print(f'Downloading: {p.title}')
+        for video in p.videos:
+            print(video.title)
+            st = video.streams.get_highest_resolution()
+            st.download()
+    elif LaValeur==" PlayList Low Quality":
+        p = Playlist(URL)
+        print(f'Downloading: {p.title}')
+        for video in p.videos:
+            print(video.title)
+            st = video.streams.get_lowest_resolution()
+            st.download()
+    elif LaValeur==" Sound":
+        youtube = pytube.YouTube(URL)
+        sound = youtube.streams.get_audio_only()
+        sound.download()
+    elif LaValeur==" Sound Playlist":
+        p = Playlist(URL)
+        print(f'Downloading: {p.title}')
+        for video in p.videos:
+            print(video.title)
+            st = video.streams.get_audio_only()
+            st.download()
+        
 ###########################################
 #Function 3           #####################
 def fonction3(event):
@@ -45,7 +81,7 @@ root.iconbitmap('./Projet/logo.ico')
 
 # Designate Height and Width of our app
 app_width = 550
-app_height = 300
+app_height = 285
 
 # The Height and Width of our pc screen
 screen_width = root.winfo_screenwidth()
@@ -57,7 +93,7 @@ y = (screen_height / 2 ) - (app_height / 2)
 root.geometry(f'{app_width}x{app_height}+{int(x)}+{int(y)}')
 
 # label_1
-label_1 = Label(root,width="550",height="300",bg="#101820")#to colorate the space of application
+label_1 = Label(root,width="550",height="285",bg="#101820")#to colorate the space of application
 label_1.place(x=0,y=0)
 root.resizable(False,False)
 
@@ -104,12 +140,25 @@ ChoixFonction.bind("<<ComboboxSelected>>",fonction1)
 image=Image.open('./Projet/download.ico')
 img=image.resize(( 100, 100))
 my_img=ImageTk.PhotoImage(img)
-btn = Button(root, image=my_img,borderwidth=0,bg="#101820",command = root.destroy)
+btn = Button(root, image=my_img,borderwidth=0,bg="#101820",command = fonction2)
 btn.grid(column = 1,row =3,padx = 15, pady = 10)
 
 # Status Bar
 label_5 = Label(root, text = "Bilal Belli | ©2022",bg="#101820", foreground= "#006B38", font=('calibre',9, 'bold'))
 label_5.grid(column = 1,row = 4,sticky=E)
 
+# Hover Button Module
+def hoverActive(boton, color1, color2, color3):
+	boton.configure(bg=color1)
+	def fuera(e):
+		boton.configure(bg=color1)
+	def dentro(e):
+		boton.configure(bg=color2)
+	def activo(e):
+		boton.configure(activebackground=color3)
+	boton.bind("<Enter>", dentro)
+	boton.bind("<Leave>", fuera)
+	boton.bind("<ButtonPress-1>", activo)
+hoverActive(btn, "#101820", "#006B38", "#ffffff")
 
 root.mainloop()
