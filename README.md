@@ -4,7 +4,7 @@
 </div>
 <h3 align="left">Features:</h3>
 <div>
-   * **Download Sound of videos**
+   <p>Download Sound of videos</p>
    <p>Download Sound of playlist videos</p>
    <p>Download Playlist of videos</p>
    <p>Download As selected Quality</p>
