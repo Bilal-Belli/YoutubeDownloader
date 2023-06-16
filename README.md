@@ -1,4 +1,4 @@
-# KnapsackProblemResolved
+# Youtube Downloader
 ### Table of Contents
 - [About](README.md#About)
 - [Features](README.md#Features)
@@ -34,7 +34,7 @@ Python - Tkinter - Pytube
 
 ### Demo
 <div align="center">
-   <img src="https://user-images.githubusercontent.com/74218805/185805086-e42a9e52-87f2-42ae-9640-caba26f4a88d.PNG">
+   <img src="https://github.com/Bilal-Belli/YoutubeDownloader/assets/74218805/11f30652-c6f7-4bef-982d-cbfece3658a8">
 </div>
 
 ### Contributing
