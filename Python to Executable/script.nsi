@@ -1,3 +1,12 @@
+; 1
+;  execute this two commands on terminal:
+;  pyi-makespec --onefile .\mainScript.py
+;  pyinstaller .\mainScript.spec
+
+; 2
+;  install NSIS
+;  compile this file (use your appropriate paths)
+
 Outfile "youtubeDownloader.exe"
 Section
 SetOutPath "$INSTDIR"
