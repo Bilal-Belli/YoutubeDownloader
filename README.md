@@ -10,14 +10,6 @@
 ### About
 This is a Python-based project that utilizes the Tkinter GUI framework and the Pytube library to download audio files from YouTube videos. This project provides a simple and intuitive user interface that allows users to download the sound from individual videos, playlists of videos, and even entire playlists in one go.
 
-One of the main features of this project is its ability to download audio files from individual videos. Users can easily copy and paste the link to the YouTube video they wish to download and select their desired audio quality. This feature makes it easy for users to save their favorite songs, podcasts, or lectures from YouTube to listen to offline.
-
-In addition, this project allows users to download the audio from entire playlists of videos. Users can copy and paste the link to the playlist they wish to download and select their desired audio quality. This feature makes it convenient for users to download entire playlists of music or other audio content.
-
-Moreover, the project also enables users to download entire playlists of videos. This feature is particularly useful for users who wish to save educational or entertainment videos to watch offline without an internet connection. Users can copy and paste the link to the playlist and select their desired audio quality.
-
-Overall, the "YoutubeDownloader" repository on Github is a useful and user-friendly project that provides a simple and convenient way to download audio files from YouTube videos. Its intuitive interface and powerful features make it a valuable tool for anyone who wishes to save their favorite YouTube content for offline listening.
-
 ### Features
 1. Download Sound of videos.
 2. Download Sound of playlist videos.
@@ -34,7 +26,7 @@ Python - Tkinter - Pytube
 
 ### Demo
 <div align="center">
-   <img src="https://github.com/Bilal-Belli/YoutubeDownloader/assets/74218805/11f30652-c6f7-4bef-982d-cbfece3658a8">
+   <video width="514" alt="demoVideo" src="https://github.com/user-attachments/assets/bf650de1-3db5-45b7-83c8-fb5086f96b06">
 </div>
 
 ### Contributing
